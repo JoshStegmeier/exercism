@@ -10,6 +10,15 @@ HelloWorld.prototype.hello = function(input) {
 //
 // YOUR CODE GOES HERE
 //
+
+    var name = input;
+
+    if (name.length > 0) {
+        return "Hello, " + name + "!";
+    } else {
+        return "Hello, World!"
+    }
+
 };
 
 module.exports = HelloWorld;
