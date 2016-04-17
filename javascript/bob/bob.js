@@ -5,46 +5,36 @@
 
 var Bob = function() {};
 
+function isUpperCase (a) {
+    return (a === a.toUpperCase());
+}
+
+function isBlankSpace (a) {
+    if (/\S/g.test(a) === false) {
+        return (true);
+    }
+}
+
+function isALetter (a) {
+    return (/[a-z]/i.test(a));
+}
+
+function isAQuestion (a) {
+    return (a.substr(-1) === "?");
+}
+
 Bob.prototype.hey = function(input) {
 
-    function upperCase (a) {
-        return (a === a.toUpperCase());
-    }
+    var yelling = isUpperCase(input);
+    var taylorSwift = isBlankSpace(input);
+    var oneLetterOrMore = isALetter(input);
+    var aQuestion = isAQuestion(input);
 
-    function nonWhitespace (a) {
-        return (/\S/g.test(a));
-    }
-
-    function blank (a) {
-        if (nonWhitespace (a) === false) {
-            return (true);
-        }
-    }
-
-    function hasLetters (a) {
-        return (/[a-z]/i.test(a));
-    }
-
-    function question (a) {
-        return (a.substr(-1) === "?");
-    }
-
-    var w = upperCase(input);
-    var x = nonWhitespace(input);
-    var x1 = blank(input);
-    var y = hasLetters(input);
-    var z = question(input);
-
-    // var upperCase = (a === a.toUpperCase());
-    // var nonWhitespace = (/\S/g.test(a));
-    // var hasLetters = (/[a-z]/i.test(a));
-    // var question = (a.substr(-1) === "?");
-
-    if (w && y) {
+    if (yelling && oneLetterOrMore) {
         return "Whoa, chill out!";
-    } else if (z) {
+    } else if (aQuestion) {
         return "Sure.";
-    } else if (x1) {
+    } else if (taylorSwift) {
         return "Fine. Be that way!";
     } else {
         return "Whatever.";
