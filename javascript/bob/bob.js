@@ -7,36 +7,48 @@ var Bob = function() {};
 
 Bob.prototype.hey = function(input) {
 
-    var a = input;
+    function upperCase (a) {
+        return (a === a.toUpperCase());
+    }
 
-    var notBlank = new RegExp(/\S/g);
-    var notBlankTest = notBlank.test(a);
+    function nonWhitespace (a) {
+        return (/\S/g.test(a));
+    }
 
-    var hasLetters= new RegExp(/[a-z]/i);
-    var hasLettersTest = hasLetters.test(a);
+    function blank (a) {
+        if (nonWhitespace (a) === false) {
+            return (true);
+        }
+    }
 
-    if (a === a.toUpperCase() && hasLettersTest === true) {
+    function hasLetters (a) {
+        return (/[a-z]/i.test(a));
+    }
+
+    function question (a) {
+        return (a.substr(-1) === "?");
+    }
+
+    var w = upperCase(input);
+    var x = nonWhitespace(input);
+    var x1 = blank(input);
+    var y = hasLetters(input);
+    var z = question(input);
+
+    // var upperCase = (a === a.toUpperCase());
+    // var nonWhitespace = (/\S/g.test(a));
+    // var hasLetters = (/[a-z]/i.test(a));
+    // var question = (a.substr(-1) === "?");
+
+    if (w && y) {
         return "Whoa, chill out!";
-    } else if (a.substr(-1) === "?") {
+    } else if (z) {
         return "Sure.";
-    } else if (/\S/g.test(a) === false) {
+    } else if (x1) {
         return "Fine. Be that way!";
     } else {
         return "Whatever.";
     }
-
-    // var b = a.match("\\?", "g");
-    // var c = a.match(/\S/g);
-    //
-    //     if ( b === true ) {
-    //         return "Sure.";
-    //     } else if (a === a.toUpperCase()) {
-    //         return "Whoa, chill out!";
-    //     } else if (c === true) {
-    //         return "Fine. Be that way!";
-    //     } else {
-    //         return "Whatever.";
-    //     }
 
 };
 
