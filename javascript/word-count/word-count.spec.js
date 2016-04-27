@@ -3,7 +3,7 @@ var Words = require('./word-count');
 describe('count()', function() {
   var words = new Words();
 
-  xit('counts one word', function() {
+  it('counts one word', function() {
     var expectedCounts = { word: 1 };
     expect(words.count('word')).toEqual(expectedCounts);
   });

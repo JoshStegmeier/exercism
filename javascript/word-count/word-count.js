@@ -2,8 +2,14 @@ var Words = function() {};
 
 Words.prototype.count = function(input) {
 
-    var str = input;
+    var str = input.toLowerCase();
+    str = str.replace('\t', ' ');
+    str = str.replace('\n', ' ');
+    str = str.replace('  ', ' ');
+    str = str.trim();
+    console.log(str);
     var res = str.split(" ");
+    console.log(res);
 
     var initialValue = {};
 
@@ -13,7 +19,7 @@ Words.prototype.count = function(input) {
         } else {
                 tally[vote] = tally[vote] + 1;
             }
-        console.log(tally);
+        // console.log(tally);
         return tally;
     };
 
