@@ -39,6 +39,7 @@ BeerSong.prototype.sing = function(a, b) {
                 sentence += i + " bottles of beer on the wall, " + i + " bottles of beer." + "\n" + "Take one down and pass it around, " + x + " bottles of beer on the wall." + "\n" + "\n";
             }
         }
+        sentence = sentence.replace(/\n$/, "");
         return sentence;
     }
 
