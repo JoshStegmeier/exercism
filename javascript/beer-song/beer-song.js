@@ -2,7 +2,7 @@ var BeerSong = function() {};
 
     var sentence = "";
     
-    function beerA (x) {
+    function beerCore (x) {
     
         if (x === 2) {
             sentence += x + " bottles of beer on the wall, " + x + " bottles of beer." + "\n" + "Take one down and pass it around, " + (x - 1) + " bottle of beer on the wall." + "\n" ;
@@ -13,32 +13,29 @@ var BeerSong = function() {};
         } else if (x > 1) {
             sentence += x + " bottles of beer on the wall, " + x + " bottles of beer." + "\n" + "Take one down and pass it around, " + (x - 1) + " bottles of beer on the wall." + "\n" ;
         } 
+        
     }
 
-    function beerB (a, b) {
+    function beerSing (a, b) {
 
-    sentence = "";
+        sentence = "";
+            
+        if (isNaN(b)) {
+            b = 0;
+        } else {
+            console.log("b is a defined number!");
+        }
+
+        while (a >= b) {
+            var i = a;
+            console.log (i);
+            beerCore(i);
+            sentence += "\n";
+            var x = i-1;
+            a--;
+            console.log(a);
+        }
         
-    if (isNaN(b)) {
-        b = 0;
-    } else {
-        console.log("b is a defined number!");
-}
-
-console.log("The following is B:");
-console.log(b);
-
-console.log(a && b);
-
-            while (a >= b) {
-                var i = a;
-                console.log (i);
-                beerA(i);
-                sentence += "\n";
-                var x = i-1;
-                a--;
-                console.log(a);
-            }
         sentence = sentence.replace(/\n$/, "");
         return sentence;
     }
@@ -46,25 +43,14 @@ console.log(a && b);
 BeerSong.prototype.verse = function(input) {
 
     sentence = "";
-    
-    beerA(input);
-
-    console.log(sentence);
-
+    beerCore(input);
     return sentence;
 
 };
 
 BeerSong.prototype.sing = function(a, b) {
 
-    console.log(a, b);
-
-// console.log("The following is B:");
-// console.log(b);
-
-    // (8, 6);
-
-    return beerB(a, b);
+    return beerSing(a, b);
 
 };
 
